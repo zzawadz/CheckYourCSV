@@ -1,5 +1,5 @@
 source("code.R")
-
+options(shiny.maxRequestSize=1024^3)
 
 shinyServer(function(input, output) {
 
