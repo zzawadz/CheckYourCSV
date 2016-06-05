@@ -15,9 +15,11 @@ dashboardPage(
   ),
   dashboardBody(
     tabItems(
-      tabItem("problemsTab", dataTableOutput("problems")),
-      tabItem("problemsRowsTab", dataTableOutput("problemsRows")),
-      tabItem("rawDataTab", dataTableOutput("rawData")),
+      tabItem("problemsTab", 
+              div(style = 'overflow-x: scroll', dataTableOutput("problems"))),
+      tabItem("problemsRowsTab", 
+              div(style = 'overflow-x: scroll', dataTableOutput("problemsRows"))),
+      tabItem("rawDataTab", div(style = 'overflow-x: scroll', dataTableOutput("rawData"))),
       tabItem("downloadTab", downloadButton("cleanData", "Get your data without problematic rows")),
       tabItem("appInfoTab", 
               fluidRow(
