@@ -1,7 +1,7 @@
 source("code.R")
 options(shiny.maxRequestSize=1024^3)
 
-shinyServer(function(input, output) {
+shinyServer(function(input, output, session) {
 
   fileInfo = reactive({
     req(input$dataFile)
@@ -10,6 +10,16 @@ shinyServer(function(input, output) {
   
   dataSet = reactive({
     req(fileInfo())
+    
+    ext = tools::file_ext(fileInfo()$name)
+    
+    if(ext != "csv") 
+    {
+      createAlert(session, anchorId = "fileAlert", alertId = "fileError",title = "Error!", paste("This is not a csv! You have uploaded", ext))
+      req(NULL)
+    }
+    closeAlert(session, "fileError")
+    
     read_csv(fileInfo()$datapath)
   })
   

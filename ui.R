@@ -15,7 +15,8 @@ dashboardPage(
   ),
   dashboardBody(
     tabItems(
-      tabItem("problemsTab", 
+      tabItem("problemsTab",
+              bsAlert("fileAlert"),
               div(style = 'overflow-x: scroll', dataTableOutput("problems"))),
       tabItem("problemsRowsTab", 
               div(style = 'overflow-x: scroll', dataTableOutput("problemsRows"))),
