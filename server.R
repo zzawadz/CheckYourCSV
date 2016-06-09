@@ -15,6 +15,7 @@ shinyServer(function(input, output, session) {
     
     if(ext != "csv") 
     {
+      closeAlert(session, "fileError")
       createAlert(session, anchorId = "fileAlert", alertId = "fileError",title = "Error!", paste("This is not a csv! You have uploaded", ext))
       req(NULL)
     }
